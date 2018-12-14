@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class Jack_Controls : MonoBehaviour {
 
-    // Variables for the spped movement of the character
+    // Variables for the speed movement of the character
     public float maxSpeed = 5f;
     bool facingRight = true;
 
-    // Variables for the 
+    // Variables for the ground check and jumping system
     bool grounded = false;
-    public Transform groundCheck;
     float groundRadius = 0.1f;
+    public float jumpForce = 250f;
+    public Transform groundCheck;
     public LayerMask whatIsGround;
-    public float jumpForce = 700f;
-
+    
+    // Initialize Animator and Rigidbody 
     Animator anim;
     Rigidbody2D rigid2D;
 
-    // Use this for initialization
+    // Initialization of the code
     void Start () {
 
+        // Initialize Animator and Rigidbody
         anim = GetComponent<Animator>();
-
         rigid2D = GetComponent<Rigidbody2D>();
     }
 	
+    // Constant update of the code
     void Update()
     {
+        //Checking variables for jumping
         if (grounded && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Ground", false);
@@ -38,17 +41,17 @@ public class Jack_Controls : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+        // Jumping
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         anim.SetBool("Ground", grounded);
-
         anim.SetFloat("vSpeed", rigid2D.velocity.y);
 
+        // Moving left or right
         float move = Input.GetAxis("Horizontal");
-
         rigid2D.velocity = new Vector2(move * maxSpeed, rigid2D.velocity.y);
-
         anim.SetFloat("Speed", Mathf.Abs(move));
 
+        // Flipping sides
         if (move > 0 && !facingRight)
             Flip();
         else if (move < 0 && facingRight)
@@ -56,6 +59,7 @@ public class Jack_Controls : MonoBehaviour {
 
 	}
 
+    // Function for flipping the character
     void Flip()
     {
         facingRight = !facingRight;
