@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: b68791921d4bba8459a3919b4ed4d6fd
+guid: 1f25c63e32e5bf347aedd69c08bf47c5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Jack-Character-Jump-SpriteSheet_0
-    21300002: Jack-Character-Jump-SpriteSheet_1
+    21300000: Jack-Falling-SpriteSheet_0
+    21300002: Jack-Falling-SpriteSheet_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -86,7 +86,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jack-Character-Jump-SpriteSheet_0
+      name: Jack-Falling-SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,13 +100,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e89ae26fb6735ef438b2079a0acbe4f5
+      spriteID: 4b1ead649e53fc744bbea7ec0569b6d0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jack-Character-Jump-SpriteSheet_1
+      name: Jack-Falling-SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ece4b45c5ff0c641b086b89d066cf91
+      spriteID: 56caad639a0420342b4a8ccfc621a6cc
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 70922d611b7ac344ab3ac7b30fa4c537
+    spriteID: f0fd32a7e7b33914cabebc486990e1d8
     vertices: []
     indices: 
     edges: []
