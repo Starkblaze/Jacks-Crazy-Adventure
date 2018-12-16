@@ -34,7 +34,7 @@ public class Jack_Controls : MonoBehaviour {
         if (grounded && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Ground", false);
-            rigid2D.AddForce(new Vector2(0, jumpForce));
+	        rigid2D.AddForce(new Vector2(0, jumpForce));
         }
     }
 
