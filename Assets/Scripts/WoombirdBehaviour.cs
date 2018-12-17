@@ -52,6 +52,7 @@ public class WoombirdBehaviour : MonoBehaviour {
 		
 		// Jumping
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-		
+		anim.SetBool("Ground", grounded);
+		anim.SetFloat("VerticalSpeed", rigid2D.velocity.y);
 	}
 }

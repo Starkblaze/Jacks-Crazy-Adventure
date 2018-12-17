@@ -44,7 +44,7 @@ public class Jack_Controls : MonoBehaviour {
         // Jumping
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         anim.SetBool("Ground", grounded);
-        anim.SetFloat("vSpeed", rigid2D.velocity.y);
+		anim.SetFloat("VerticalSpeed", rigid2D.velocity.y);
 
         // Moving left or right
         float move = Input.GetAxis("Horizontal");
