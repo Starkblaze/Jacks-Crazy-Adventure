@@ -11,9 +11,16 @@ public class Jack_Controls : MonoBehaviour {
     // Variables for the ground check and jumping system
     bool grounded = false;
     float groundRadius = 0.1f;
-    public float jumpForce = 250f;
+	public float jumpForce = 250f;
+	public float smashJump = 150f;
     public Transform groundCheck;
-    public LayerMask whatIsGround;
+	public LayerMask whatIsGround;
+    
+	// Variables for checking if an enemy has been stomped
+	bool smashed = false;
+	float smashRadius = 0.1f;
+	public Transform smashCheck;
+	public LayerMask whatCanSmash;
     
     // Initialize Animator and Rigidbody 
     Animator anim;
@@ -36,6 +43,11 @@ public class Jack_Controls : MonoBehaviour {
             anim.SetBool("Ground", false);
 	        rigid2D.AddForce(new Vector2(0, jumpForce));
         }
+        
+	    if (smashed)
+	    {
+	    	rigid2D.AddForce(new Vector2(0, smashJump));
+	    }
     }
 
 	// Update is called once per frame
@@ -55,7 +67,10 @@ public class Jack_Controls : MonoBehaviour {
         if (move > 0 && !facingRight)
             Flip();
         else if (move < 0 && facingRight)
-            Flip();
+	        Flip();
+            
+		// Smashed behaviour
+		smashed = Physics2D.OverlapCircle(smashCheck.position, smashRadius, whatCanSmash);
 
 	}
 
