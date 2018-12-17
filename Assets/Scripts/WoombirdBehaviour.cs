@@ -11,6 +11,11 @@ public class WoombirdBehaviour : MonoBehaviour {
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	
+	// Timer variables
+	bool TimerStarted = true;
+	private float timer = 0f;
+	public float TimeIWantInSeconds = 1.5f;
+	
 	// Initialize Animator and Rigidbody 
 	Animator anim;
 	Rigidbody2D rigid2D;
@@ -27,11 +32,18 @@ public class WoombirdBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		//Checking variables for jumping
-		if (grounded)
+		// Adding time to the timer for jumping
+		if(TimerStarted)
 		{
-			//anim.SetBool("Ground", false);
+			timer += Time.deltaTime;
+		}	
+		
+		//Checking variables for jumping
+		if (grounded && timer >= TimeIWantInSeconds)
+		{
+			//anim.SetBool("Ground", false);		
 			rigid2D.AddForce(new Vector2(0, jumpForce));
+			timer = 0;
 		}
 		
 	}

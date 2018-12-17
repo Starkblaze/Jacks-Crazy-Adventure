@@ -347,7 +347,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 669352773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93.744, y: -13.721, z: 0}
+  m_LocalPosition: {x: -94.402, y: -13.721, z: 0}
   m_LocalScale: {x: 2.6, y: 2.5125, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -545,11 +545,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a47b0c08577814ba13f35af7dd49bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 80
+  jumpForce: 250
   groundCheck: {fileID: 436869380}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 55
+  TimeIWantInSeconds: 1.5
 --- !u!1 &1158397719
 GameObject:
   m_ObjectHideFlags: 3
@@ -1073,7 +1074,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986393261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -88.37, y: -13.692, z: 0}
+  m_LocalPosition: {x: -88.37, y: -13.698, z: 0}
   m_LocalScale: {x: 3.5275178, y: 3.6780975, z: 1.0464}
   m_Children: []
   m_Father: {fileID: 0}
