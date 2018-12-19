@@ -7,14 +7,20 @@ public class WoombirdBehaviour : MonoBehaviour {
 	// Variables for the ground check and jumping system
 	bool grounded = false;
 	float groundRadius = 0.1f;
-	public float jumpForce = 250f;
+	float jumpForce = 250f;
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	
 	// Timer variables
-	bool TimerStarted = true;
+	bool TimerStarted = false;
 	private float timer = 0f;
-	public float TimeIWantInSeconds = 1.5f;
+	float TimeIWantInSeconds = 2f;
+	
+	// Variables for the smashing behaviour when dying
+	bool smashed = false;
+	float smashRadius = 0.1f;
+	public Transform smashCheck;
+	public LayerMask whatCanSmash;
 	
 	// Initialize Animator and Rigidbody 
 	Animator anim;
@@ -33,17 +39,30 @@ public class WoombirdBehaviour : MonoBehaviour {
 	void Update () {
 		
 		// Adding time to the timer for jumping
+		if(grounded)
+		{
+			TimerStarted = true;
+		}
+		
 		if(TimerStarted)
 		{
 			timer += Time.deltaTime;
+			print(timer);
 		}	
 		
 		//Checking variables for jumping
 		if (grounded && timer >= TimeIWantInSeconds)
-		{
-			//anim.SetBool("Ground", false);		
+		{		
 			rigid2D.AddForce(new Vector2(0, jumpForce));
+			TimerStarted = false;
 			timer = 0;
+		}
+		
+		if (smashed)
+		{
+			anim.SetBool("Smashed", smashed);
+			timer = 0;
+			Destroy(gameObject, 0.5f);
 		}
 		
 	}
@@ -54,5 +73,9 @@ public class WoombirdBehaviour : MonoBehaviour {
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
 		anim.SetFloat("VerticalSpeed", rigid2D.velocity.y);
+		
+		// Smashed detector
+		smashed = Physics2D.OverlapCircle(smashCheck.position, smashRadius, whatCanSmash);
+		//anim.SetBool("Smashed", smashed);
 	}
 }

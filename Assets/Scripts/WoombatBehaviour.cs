@@ -15,10 +15,9 @@ public class WoombatBehaviour : MonoBehaviour {
 	public Transform smashCheck;
 	public LayerMask whatCanSmash;
 	
-	// Variables for the smashing behaviour when dying
+	// Variables for flipping when walls are hit
 	bool wallTouchedLeft = false;
 	float touchRadius = 0.001f;
-	public Transform wallCheckRight;
 	public Transform wallCheckLeft;
 	public LayerMask whatCanTouch;
 	
@@ -42,7 +41,6 @@ public class WoombatBehaviour : MonoBehaviour {
 		if (smashed)
 		{
 			rigid2D.velocity = new Vector2(smashedSpeed, rigid2D.velocity.y);
-			smashed = true;
 			Destroy(gameObject, 0.5f);
 		}
 		else if (wallTouchedLeft)
