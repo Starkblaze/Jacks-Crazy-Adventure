@@ -6,7 +6,7 @@ public class WoombatBehaviour : MonoBehaviour {
 	
 	// Variables for the speed movement of the Woombat
 	float speed = -1f;
-	float smashedSpeed = 0.5f;
+	float smashedSpeed = 0.0f;
 	bool facingRight = true;
 	
 	// Variables for the smashing behaviour when dying
@@ -41,7 +41,7 @@ public class WoombatBehaviour : MonoBehaviour {
 		//Checking variables for jumping
 		if (smashed)
 		{
-			rigid2D.velocity = new Vector2(-smashedSpeed, rigid2D.velocity.y);
+			rigid2D.velocity = new Vector2(smashedSpeed, rigid2D.velocity.y);
 			smashed = true;
 			Destroy(gameObject, 0.5f);
 		}
@@ -50,11 +50,9 @@ public class WoombatBehaviour : MonoBehaviour {
 			speed = speed * -1;
 			Flip();
 		}
-		
 	}
 	
 	void FixedUpdate () {
-		
 		
 		if(!smashed)
 		{
