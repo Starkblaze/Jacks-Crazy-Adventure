@@ -5,7 +5,7 @@ using UnityEngine;
 public class WoombatBehaviour : MonoBehaviour {
 	
 	// Variables for the speed movement of the Woombat
-	float speed = 1f;
+	float speed = -1f;
 	float smashedSpeed = 0.5f;
 	bool facingRight = true;
 	
@@ -14,6 +14,13 @@ public class WoombatBehaviour : MonoBehaviour {
 	float smashRadius = 0.1f;
 	public Transform smashCheck;
 	public LayerMask whatCanSmash;
+	
+	// Variables for the smashing behaviour when dying
+	bool wallTouchedLeft = false;
+	float touchRadius = 0.001f;
+	public Transform wallCheckRight;
+	public Transform wallCheckLeft;
+	public LayerMask whatCanTouch;
 	
 	// Initialize Animator and Rigidbody 
 	Animator anim;
@@ -36,7 +43,12 @@ public class WoombatBehaviour : MonoBehaviour {
 		{
 			rigid2D.velocity = new Vector2(-smashedSpeed, rigid2D.velocity.y);
 			smashed = true;
-			Destroy(gameObject, 1);
+			Destroy(gameObject, 0.5f);
+		}
+		else if (wallTouchedLeft)
+		{
+			speed = speed * -1;
+			Flip();
 		}
 		
 	}
@@ -47,12 +59,24 @@ public class WoombatBehaviour : MonoBehaviour {
 		if(!smashed)
 		{
 			// Moving left or right
-			rigid2D.velocity = new Vector2(-speed, rigid2D.velocity.y);
+			rigid2D.velocity = new Vector2(speed, rigid2D.velocity.y);
 			anim.SetFloat("Speed", Mathf.Abs(speed));
 			
-			// Smashed behaviour
+			// Smashed detector
 			smashed = Physics2D.OverlapCircle(smashCheck.position, smashRadius, whatCanSmash);
 			anim.SetBool("Smashed", smashed);
+			
+			// Tocuh detector
+			wallTouchedLeft = Physics2D.OverlapCircle(wallCheckLeft.position, touchRadius, whatCanTouch);
 		}		
+	}
+	
+	// Function for flipping the character
+	void Flip()
+	{
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }

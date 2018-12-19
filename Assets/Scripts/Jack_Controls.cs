@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jack_Controls : MonoBehaviour {
 
     // Variables for the speed movement of the character
-	float maxSpeed = 3f;
+	float maxSpeed = 2f;
 	bool facingRight = true;
 	float move = 1f;
 
@@ -128,6 +128,7 @@ public class Jack_Controls : MonoBehaviour {
 	    }
 	    else if (killedLeft || killedRight)
 	    {
+	    	move = 0;
 	    	Destroy(gameObject);
 	    }
     }
