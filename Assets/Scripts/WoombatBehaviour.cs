@@ -5,8 +5,8 @@ using UnityEngine;
 public class WoombatBehaviour : MonoBehaviour {
 	
 	// Variables for the speed movement of the Woombat
-	public float speed = 1f;
-	public float smashedSpeed = 0.5f;
+	float speed = 1f;
+	float smashedSpeed = 0.5f;
 	bool facingRight = true;
 	
 	// Variables for the smashing behaviour when dying
@@ -34,7 +34,7 @@ public class WoombatBehaviour : MonoBehaviour {
 		//Checking variables for jumping
 		if (smashed)
 		{
-			rigid2D.velocity = new Vector2(smashedSpeed, rigid2D.velocity.y);
+			rigid2D.velocity = new Vector2(-smashedSpeed, rigid2D.velocity.y);
 			smashed = true;
 			Destroy(gameObject, 1);
 		}
@@ -47,7 +47,7 @@ public class WoombatBehaviour : MonoBehaviour {
 		if(!smashed)
 		{
 			// Moving left or right
-			rigid2D.velocity = new Vector2(speed, rigid2D.velocity.y);
+			rigid2D.velocity = new Vector2(-speed, rigid2D.velocity.y);
 			anim.SetFloat("Speed", Mathf.Abs(speed));
 			
 			// Smashed behaviour

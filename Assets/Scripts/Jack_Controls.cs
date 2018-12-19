@@ -35,7 +35,15 @@ public class Jack_Controls : MonoBehaviour {
 	// Variables for checking time in ground
 	float timer = 0f;
 	bool TimerStarted = false;	    
-	float TimeIWantInSeconds = 1.0f;
+	float TimeIWantInSeconds = 0.7f;
+	
+	// Variables for cheking in an enemy hit us
+	bool killedLeft = false;
+	bool killedRight = false;
+	float killedRadius = 0.1f;
+	public Transform killedCheckRight;
+	public Transform killedCheckLeft;
+	public LayerMask whatCanKill;
     
     // Initialize Animator and Rigidbody 
     Animator anim;
@@ -117,7 +125,11 @@ public class Jack_Controls : MonoBehaviour {
 				    timer = 0;				    
 			    }
 		    }		
-	    }    
+	    }
+	    else if (killedLeft || killedRight)
+	    {
+	    	Destroy(gameObject);
+	    }
     }
 
 	// Update is called once per frame
@@ -138,12 +150,18 @@ public class Jack_Controls : MonoBehaviour {
         else if (move < 0 && facingRight)
 	        Flip();
             
-		// Smashed behaviour
+		// Smashed detector
 		smashed = Physics2D.OverlapCircle(smashCheck.position, smashRadius, whatCanSmash);
 		
-		// Walled behaviour
+		// Walled detector
 		walled = Physics2D.OverlapCircle(walledCheck.position, walledRadius, whatIsWall);
 		anim.SetBool("WalledRight", walled);
+		
+		// Kill detector
+		killedLeft = Physics2D.OverlapCircle(killedCheckLeft.position, killedRadius, whatCanKill);
+		killedRight = Physics2D.OverlapCircle(killedCheckRight.position, killedRadius, whatCanKill);
+		
+		
 
 	}
 
