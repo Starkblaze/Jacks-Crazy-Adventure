@@ -47,7 +47,6 @@ public class WoombirdBehaviour : MonoBehaviour {
 		if(TimerStarted)
 		{
 			timer += Time.deltaTime;
-			print(timer);
 		}	
 		
 		//Checking variables for jumping
@@ -76,6 +75,5 @@ public class WoombirdBehaviour : MonoBehaviour {
 		
 		// Smashed detector
 		smashed = Physics2D.OverlapCircle(smashCheck.position, smashRadius, whatCanSmash);
-		//anim.SetBool("Smashed", smashed);
 	}
 }

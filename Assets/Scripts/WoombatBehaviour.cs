@@ -16,9 +16,9 @@ public class WoombatBehaviour : MonoBehaviour {
 	public LayerMask whatCanSmash;
 	
 	// Variables for flipping when walls are hit
-	bool wallTouchedLeft = false;
+	bool flipCheck = false;
 	float touchRadius = 0.001f;
-	public Transform wallCheckLeft;
+	public Transform flipChecker;
 	public LayerMask whatCanTouch;
 	
 	// Initialize Animator and Rigidbody 
@@ -43,7 +43,7 @@ public class WoombatBehaviour : MonoBehaviour {
 			rigid2D.velocity = new Vector2(smashedSpeed, rigid2D.velocity.y);
 			Destroy(gameObject, 0.5f);
 		}
-		else if (wallTouchedLeft)
+		else if (flipCheck)
 		{
 			speed = speed * -1;
 			Flip();
@@ -63,7 +63,7 @@ public class WoombatBehaviour : MonoBehaviour {
 			anim.SetBool("Smashed", smashed);
 			
 			// Tocuh detector
-			wallTouchedLeft = Physics2D.OverlapCircle(wallCheckLeft.position, touchRadius, whatCanTouch);
+			flipCheck = Physics2D.OverlapCircle(flipChecker.position, touchRadius, whatCanTouch);
 		}		
 	}
 	

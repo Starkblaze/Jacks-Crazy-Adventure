@@ -40,9 +40,13 @@ public class JackControls : MonoBehaviour {
 	// Variables for cheking in an enemy hit us
 	bool killedLeft = false;
 	bool killedRight = false;
+	bool killedTop = false;
+	bool killedBottom = false;
 	float killedRadius = 0.1f;
 	public Transform killedCheckRight;
 	public Transform killedCheckLeft;
+	public Transform killedCheckTop;
+	public Transform killedCheckBottom;
 	public LayerMask whatCanKill;
     
 	// Initialize Animator and Rigidbody 
@@ -127,7 +131,7 @@ public class JackControls : MonoBehaviour {
 				}
 			}		
 		}
-		else if (killedLeft || killedRight)
+		else if (killedLeft || killedRight || killedBottom || killedTop)
 		{
 			move = 0;
 			Destroy(gameObject);
@@ -161,7 +165,9 @@ public class JackControls : MonoBehaviour {
 		
 		// Kill detector
 		killedLeft = Physics2D.OverlapCircle(killedCheckLeft.position, killedRadius, whatCanKill);
-		killedRight = Physics2D.OverlapCircle(killedCheckRight.position, killedRadius, whatCanKill);		
+		killedRight = Physics2D.OverlapCircle(killedCheckRight.position, killedRadius, whatCanKill);
+		killedTop = Physics2D.OverlapCircle(killedCheckTop.position, killedRadius, whatCanKill);
+		killedBottom = Physics2D.OverlapCircle(killedCheckBottom.position, killedRadius, whatCanKill);
 
 	}
 
