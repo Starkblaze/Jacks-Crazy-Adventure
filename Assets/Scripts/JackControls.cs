@@ -5,7 +5,7 @@ using UnityEngine;
 public class JackControls : MonoBehaviour {
 	
 	// Variables for the speed movement of the character
-	float maxSpeed = 2f;
+	float maxSpeed = 3f;
 	bool facingRight = true;
 	float move = 1f;
 
@@ -48,6 +48,7 @@ public class JackControls : MonoBehaviour {
 	public Transform killedCheckTop;
 	public Transform killedCheckBottom;
 	public LayerMask whatCanKill;
+	public LayerMask whatCanKillBottom;
     
 	// Initialize Animator and Rigidbody 
 	Animator anim;
@@ -167,7 +168,7 @@ public class JackControls : MonoBehaviour {
 		killedLeft = Physics2D.OverlapCircle(killedCheckLeft.position, killedRadius, whatCanKill);
 		killedRight = Physics2D.OverlapCircle(killedCheckRight.position, killedRadius, whatCanKill);
 		killedTop = Physics2D.OverlapCircle(killedCheckTop.position, killedRadius, whatCanKill);
-		killedBottom = Physics2D.OverlapCircle(killedCheckBottom.position, killedRadius, whatCanKill);
+		killedBottom = Physics2D.OverlapCircle(killedCheckBottom.position, killedRadius, whatCanKillBottom);
 
 	}
 

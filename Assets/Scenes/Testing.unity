@@ -378,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -91.06653, y: -13.063, z: -30}
+  m_LocalPosition: {x: -91.06708, y: -13.063, z: -30}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1437033152}
@@ -970,7 +970,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269022390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -91.9, y: -9.49, z: 0.045872487}
+  m_LocalPosition: {x: -91.9, y: -9.07, z: 0.045872487}
   m_LocalScale: {x: 2.2625, y: 21.195875, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1138,7 +1138,7 @@ Transform:
   m_PrefabInternal: {fileID: 1844013111}
   m_GameObject: {fileID: 1344214157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.57, y: -9.22, z: 0}
+  m_LocalPosition: {x: -85.4, y: -13.71, z: 0}
   m_LocalScale: {x: 2.7108984, y: 2.683771, z: 1}
   m_Children:
   - {fileID: 1109555937}
@@ -1579,6 +1579,9 @@ MonoBehaviour:
   whatCanKill:
     serializedVersion: 2
     m_Bits: 15872
+  whatCanKillBottom:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!61 &1793141114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1613,11 +1616,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4288030028789938, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -84.57
+      value: -85.4
       objectReference: {fileID: 0}
     - target: {fileID: 4288030028789938, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -9.22
+      value: -13.71
       objectReference: {fileID: 0}
     - target: {fileID: 4288030028789938, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1678,13 +1681,11 @@ Prefab:
     - target: {fileID: 1960044701486812, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 1327831222197366, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 1327831222197366, guid: 44d4c08e2fc93d64a809b030ba5f3f7a, type: 2}
       propertyPath: m_Name
       value: FlipCheck
@@ -1889,7 +1890,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986393261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.53, y: -13.67, z: 0}
+  m_LocalPosition: {x: -83.6, y: -13.67, z: 0}
   m_LocalScale: {x: 2.8444688, y: 2.9658911, z: 0.843781}
   m_Children:
   - {fileID: 1771223231}
