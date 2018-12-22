@@ -5,7 +5,7 @@ using UnityEngine;
 public class WoombatBehaviour : MonoBehaviour {
 	
 	// Variables for the speed movement of the Woombat
-	float speed = -1f;
+	float speed = -1.2f;
 	float smashedSpeed = 0.0f;
 	bool facingRight = true;
 	
