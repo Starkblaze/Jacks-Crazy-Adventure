@@ -66,10 +66,10 @@ public class JackControls : MonoBehaviour {
 	void Update()
 	{
 		// Checking variables for jumping
-		if (grounded && Input.GetKeyDown(KeyCode.Space))
+		if (grounded && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1))
 		{
 			anim.SetBool("Ground", false);
-			rigid2D.AddForce(new Vector2(0 , (jumpForce)));
+			rigid2D.AddForce(new Vector2(0 , (jumpForce)/3.2f));
 		}
         
 		// Cheking if a woombat has ben smashed
@@ -79,7 +79,7 @@ public class JackControls : MonoBehaviour {
 		}
 	    
 		// Cheking if the player is sliding in a wall
-		else if (walled && Input.GetKeyDown(KeyCode.Space) && facingRight && !grounded)
+		else if (walled && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1) && facingRight && !grounded)
 		{
 			Flip();
 			move = -1; 	
@@ -97,7 +97,7 @@ public class JackControls : MonoBehaviour {
 			}
 		}
 	    
-		else if(walled && Input.GetKeyDown(KeyCode.Space) && !facingRight && !grounded)
+		else if(walled && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1) && !facingRight && !grounded)
 		{
 			Flip();
 			move = 1;
