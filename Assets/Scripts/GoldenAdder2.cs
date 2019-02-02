@@ -18,7 +18,6 @@ public class GoldenAdder2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {	
 		
-		
 		if(BoneDestroyer.goldenDestroyed2 == true)
 		{
 			EmptyBone.sprite = GoldenBone;
