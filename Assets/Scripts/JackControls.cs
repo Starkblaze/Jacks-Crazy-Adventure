@@ -66,10 +66,16 @@ public class JackControls : MonoBehaviour {
 	void Update()
 	{
 		// Checking variables for jumping
-		if (grounded && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1))
+		if (grounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			anim.SetBool("Ground", false);
 			rigid2D.AddForce(new Vector2(0 , (jumpForce)));
+		}
+		
+		if (grounded && Input.touchCount == 1)
+		{
+			anim.SetBool("Ground", false);
+			rigid2D.AddForce(new Vector2(0 , (jumpForce/2)));
 		}
         
 		// Cheking if a woombat has ben smashed
