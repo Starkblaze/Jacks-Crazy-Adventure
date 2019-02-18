@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JackControls : MonoBehaviour {
 	
@@ -66,16 +67,10 @@ public class JackControls : MonoBehaviour {
 	void Update()
 	{
 		// Checking variables for jumping
-		if (grounded && Input.GetKeyDown(KeyCode.Space))
+		if (grounded && Input.GetMouseButtonDown(0))
 		{
 			anim.SetBool("Ground", false);
 			rigid2D.AddForce(new Vector2(0 , (jumpForce)));
-		}
-		
-		if (grounded && Input.touchCount == 1)
-		{
-			anim.SetBool("Ground", false);
-			rigid2D.AddForce(new Vector2(0 , (jumpForce/2)));
 		}
         
 		// Cheking if a woombat has ben smashed
@@ -85,7 +80,7 @@ public class JackControls : MonoBehaviour {
 		}
 	    
 		// Cheking if the player is sliding in a wall
-		else if (walled && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1) && facingRight && !grounded)
+		else if (walled && Input.GetMouseButtonDown(0) && facingRight && !grounded)
 		{
 			Flip();
 			move = -1; 	
@@ -103,7 +98,7 @@ public class JackControls : MonoBehaviour {
 			}
 		}
 	    
-		else if(walled && (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 1) && !facingRight && !grounded)
+		else if(walled && Input.GetMouseButtonDown(0) && !facingRight && !grounded)
 		{
 			Flip();
 			move = 1;
@@ -142,6 +137,7 @@ public class JackControls : MonoBehaviour {
 		{
 			move = 0;
 			Destroy(gameObject);
+			SceneManager.LoadScene(1);
 		}
 	}
 
